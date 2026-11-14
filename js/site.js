@@ -23,8 +23,7 @@
   // 히어로: 영상이 없거나 재생이 막히면 배경만 보이게
   const hv = $('.hero-v');
   if (hv) {
-    // 마지막 source까지 실패했을 때만 영상을 지움 (휴대폰용 source는 PC에서 건너뛰며 error가 나는 게 정상)
-    hv.addEventListener('error', e => { if (e.target === hv || e.target === hv.querySelector('source:last-of-type')) hv.remove(); }, true);
+    hv.addEventListener('error', () => hv.remove());
     if (reduce) hv.pause(); else hv.play().catch(() => {});
   }
 

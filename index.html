@@ -64,10 +64,12 @@
 <!-- Hero: replace assets/video/hero.mp4 to change the video -->
 <section class="hero-wrap">
   <div class="hero">
-    <video class="hero-v" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg">
-      <source src="assets/video/hero-m.mp4" type="video/mp4" media="(max-width: 900px)">
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
+    <video class="hero-v" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg" data-src="assets/video/hero.mp4" data-src-m="assets/video/hero-m.mp4" data-poster-m="assets/img/hero-poster-m.jpg"></video>
+    <script>
+    /* 화면 폭에 따라 PC용/휴대폰용 영상을 고름 (휴대폰용은 세로 구도, 목사님 장면부터 시작) */
+    (function(){var v=document.currentScript.previousElementSibling,m=window.matchMedia('(max-width: 900px)').matches;
+      if(m)v.poster=v.dataset.posterM;v.src=m?v.dataset.srcM:v.dataset.src;})();
+    </script>
     <div class="hero-shade"></div>
     <div class="hero-c">
       <h1>Deny Yourself.<br>Take Up Your Cross.<br>Follow Jesus.<br>I Am a Disciple.</h1>
